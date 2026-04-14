@@ -34,7 +34,7 @@ export const MODEL_REGISTRY: Record<string, ModelInfo> = {
   },
   Pro: {
     codename: "Pro",
-    modelId: "gemini-3.1-flash-image-preview",
+    modelId: "gemini-3-pro-image-preview",
     isDefault: false,
     speed: "~8-12s",
     maxResolution: "4K",

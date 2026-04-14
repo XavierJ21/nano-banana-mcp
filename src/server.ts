@@ -20,10 +20,10 @@ export function createServer(): McpServer {
     {
       prompt: z.string().describe("Text description of the image to generate"),
       model: z
-        .enum(["gemini-3.1-flash-image-preview", "auto"])
+        .enum(["gemini-3.1-flash-image-preview", "gemini-3-pro-image-preview", "auto"])
         .default("auto")
         .describe(
-          "Model to use. 'auto' enables smart routing (NB2 default, Pro for complex/4K, Flash for drafts)"
+          "Model to use. 'auto' enables smart routing (NB2/Flash default, Pro for complex/4K/high-thinking)"
         ),
       aspect_ratio: z
         .enum(["1:1", "16:9", "9:16", "4:3", "3:4", "2:3", "3:2", "21:9"])
@@ -72,7 +72,7 @@ export function createServer(): McpServer {
         .string()
         .describe("Absolute path to the input image file (JPEG, PNG, WebP, GIF)"),
       model: z
-        .enum(["gemini-3.1-flash-image-preview", "auto"])
+        .enum(["gemini-3.1-flash-image-preview", "gemini-3-pro-image-preview", "auto"])
         .default("auto")
         .describe("Model to use. 'auto' selects based on instruction complexity."),
       aspect_ratio: z

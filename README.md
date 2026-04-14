@@ -13,11 +13,11 @@ TypeScript MCP server for AI image generation via Google Gemini with intelligent
 
 ## Models
 
-| Codename | Speed | Max Res | Cost (1K) | Best For |
-|----------|-------|---------|-----------|----------|
-| NB2 (default) | ~4-6s | 4K | $0.067 | Most use cases |
-| Pro | ~8-12s | 4K | $0.134 | Complex/photorealistic/4K |
-| Flash | ~3s | 1K | ~$0.04 | Drafts, quick tests |
+| Codename | Model ID | Speed | Max Res | Cost (1K) | Best For |
+|----------|----------|-------|---------|-----------|----------|
+| NB2 (default) | `gemini-3.1-flash-image-preview` | ~4-6s | 4K | $0.067 | Most use cases |
+| Pro | `gemini-3-pro-image-preview` | ~30-90s | 4K | $0.134 | Complex/photorealistic/4K |
+| Flash | `gemini-3.1-flash-image-preview` | ~3s | 1K | ~$0.04 | Drafts, quick tests |
 
 All model IDs are abstracted in `src/config.ts` for easy updates when Google promotes preview models to GA.
 
@@ -62,7 +62,7 @@ Add to your `.mcp.json`:
 
 ```
 prompt          (required) Text description of the image
-model           auto | gemini-3.1-flash-image-preview
+model           auto | gemini-3.1-flash-image-preview | gemini-3-pro-image-preview
 aspect_ratio    1:1 | 16:9 | 9:16 | 4:3 | 3:4 | 2:3 | 3:2 | 21:9  (default: 1:1)
 image_size      512 | 1K | 2K | 4K  (default: 1K)
 thinking_level  minimal | low | medium | high  (default: minimal)
@@ -75,7 +75,7 @@ output_path     optional file path — returns base64 if omitted
 ```
 instruction         (required) What to change
 input_image_path    (required) Absolute path to input image (JPEG, PNG, WebP, GIF)
-model               auto | gemini-3.1-flash-image-preview
+model               auto | gemini-3.1-flash-image-preview | gemini-3-pro-image-preview
 aspect_ratio        1:1 | 16:9 | 9:16 | 4:3 | 3:4 | 2:3 | 3:2 | 21:9
 image_size          512 | 1K | 2K | 4K
 output_path         optional file path
@@ -89,5 +89,6 @@ No parameters. Returns model capabilities, pricing, and current session stats.
 
 - All generated images include a SynthID watermark (non-removable, invisible to humans)
 - Session state persists at `~/.nano-banana-session.json`
-- Rate limits: NB2 ~15 RPM, Pro ~10 RPM (with billing enabled)
+- Rate limits: NB2/Flash ~15-30 RPM, Pro ~10 RPM (with billing enabled)
+- Pro tier latency: first-header response typically 30–90s — no client timeout is enforced, Node fetch runs unbounded
 - `use_grounding: true` enables Google Search for real-world accuracy (landmarks, events, people)
