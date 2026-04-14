@@ -62,7 +62,7 @@ Add to your `.mcp.json`:
 
 ```
 prompt          (required) Text description of the image
-model           auto | gemini-2.0-flash-preview-image-generation
+model           auto | gemini-3.1-flash-image-preview
 aspect_ratio    1:1 | 16:9 | 9:16 | 4:3 | 3:4 | 2:3 | 3:2 | 21:9  (default: 1:1)
 image_size      512 | 1K | 2K | 4K  (default: 1K)
 thinking_level  minimal | low | medium | high  (default: minimal)
@@ -75,7 +75,7 @@ output_path     optional file path — returns base64 if omitted
 ```
 instruction         (required) What to change
 input_image_path    (required) Absolute path to input image (JPEG, PNG, WebP, GIF)
-model               auto | gemini-2.0-flash-preview-image-generation
+model               auto | gemini-3.1-flash-image-preview
 aspect_ratio        1:1 | 16:9 | 9:16 | 4:3 | 3:4 | 2:3 | 3:2 | 21:9
 image_size          512 | 1K | 2K | 4K
 output_path         optional file path

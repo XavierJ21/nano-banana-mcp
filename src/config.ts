@@ -20,7 +20,7 @@ export function getApiKey(): string {
 export const MODEL_REGISTRY: Record<string, ModelInfo> = {
   NB2: {
     codename: "NB2",
-    modelId: "gemini-2.0-flash-preview-image-generation",
+    modelId: "gemini-3.1-flash-image-preview",
     isDefault: true,
     speed: "~4-6s",
     maxResolution: "4K",
@@ -34,7 +34,7 @@ export const MODEL_REGISTRY: Record<string, ModelInfo> = {
   },
   Pro: {
     codename: "Pro",
-    modelId: "gemini-2.0-flash-preview-image-generation",
+    modelId: "gemini-3.1-flash-image-preview",
     isDefault: false,
     speed: "~8-12s",
     maxResolution: "4K",
@@ -47,7 +47,7 @@ export const MODEL_REGISTRY: Record<string, ModelInfo> = {
   },
   Flash: {
     codename: "Flash",
-    modelId: "gemini-2.0-flash-preview-image-generation",
+    modelId: "gemini-3.1-flash-image-preview",
     isDefault: false,
     speed: "~3s",
     maxResolution: "1K",
